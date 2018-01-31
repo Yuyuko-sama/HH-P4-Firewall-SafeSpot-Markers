@@ -1,7 +1,10 @@
-# Only for P4
-# HH-Firewall-Markers
+<img src=https://i.imgur.com/exofxEN.jpg>
 
-!hhmarker or /hhmarker to toggle on or off
+# Only for Phase 4
+# HH-Firewall-SafeSpot-Markers
+
+!hhmarker or /hhmarker to toggle on or off (on by default)
+
 
 # Requires
 
