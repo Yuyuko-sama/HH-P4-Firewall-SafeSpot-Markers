@@ -19,7 +19,6 @@ module.exports = function hhmarker(dispatch) {
 	let enabled = true,
 		inDung = false,
 		uid = 999999999,
-		name = '',
 		markers = [];
 	
 	command.add('hhmarker', () => {
@@ -37,11 +36,7 @@ module.exports = function hhmarker(dispatch) {
 			command.message('Invalid input');
 		}
 	});
-	
-	dispatch.hook('S_LOGIN', 2, (event) => {
-		name = event.name;
-	});
-	
+		
 	dispatch.hook('S_LOAD_TOPO', 1, (event) => {
 		ClearSpawns();
 		if(event.zone == HARROWHOLD){
