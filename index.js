@@ -19,6 +19,7 @@ module.exports = function hhmarker(dispatch) {
 	let enabled = true,
 		inDung = false,
 		uid = 999999999,
+		name = '',
 		markers = [];
 	
 	command.add('hhmarker', () => {
@@ -36,8 +37,12 @@ module.exports = function hhmarker(dispatch) {
 			command.message('Invalid input');
 		}
 	});
-		
-	dispatch.hook('S_LOAD_TOPO', 1, (event) => {
+	
+	dispatch.hook('S_LOGIN', 9, (event) => {
+		name = event.name;
+	});
+	
+	dispatch.hook('S_LOAD_TOPO', 3, (event) => {
 		ClearSpawns();
 		if(event.zone == HARROWHOLD){
 			inDung = true;
@@ -69,15 +74,15 @@ module.exports = function hhmarker(dispatch) {
 	}
 	
 	function SpawnThing(position,item){
-		dispatch.toClient('S_SPAWN_COLLECTION', 1, {
-			uid : uid,
-			item : item,
+		dispatch.toClient('S_SPAWN_COLLECTION', 4, {
+			gameId : uid,
+			id : item,
 			amount : 1,
-			x : position.x,
-			y : position.y,
-			z : position.z,
-			unk1 : 0,
-			unk2 : 0
+			loc : position,
+			angle: Math.PI,
+			extractor : 0,
+			extractorDisabled : 0,
+			extractorDisabledTime : 0
 		});
 		markers.push(uid);
 		uid--;
