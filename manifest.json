@@ -1,0 +1,13 @@
+{
+	"files": {
+		"README.md": "c364c1e090b20c4a091332cb32add9315a087908540e404adff1f6ba8d9e3cd7",
+		"index.js": "c564fb526684df81e09040d42f39fb26e023042f82295de8ea3b9a1cdee6555d",
+		"module.json": "bfa22c61be0fd109e924a57a2b555da31b0ec37bd0d691123e219bb060a96813"
+	},
+	"defs": {
+		"C_LOAD_TOPO_FIN": 1,
+		"S_DESPAWN_COLLECTION": 2,
+		"S_LOAD_TOPO": 3,
+		"S_SPAWN_COLLECTION": 4
+	}
+}

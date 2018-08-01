@@ -21,7 +21,7 @@ module.exports = function hhmarker(dispatch) {
 		uid = 999999999,
 		markers = [];
 	
-	command.add('hhmarker', () => {
+	command.add('p4', () => {
 		if(enabled){
 			enabled = false;
 			ClearSpawns()
@@ -33,7 +33,7 @@ module.exports = function hhmarker(dispatch) {
 			command.message('HH-Marker p4 module toggled ON');
 		}
 		else{
-			command.message('Invalid input');
+			command.message('Invalid input,pls type command: p4 to toggle this module ');
 		}
 	});
 		
@@ -84,9 +84,9 @@ module.exports = function hhmarker(dispatch) {
 	}
 	
 	function Despawn(uid){
-	dispatch.toClient('S_DESPAWN_COLLECTION', 1, {
-			uid : uid,
-			unk : 0
+	dispatch.toClient('S_DESPAWN_COLLECTION', 2, {
+			gameId : uid,
+			collected : 0
 		});
 	}
 
