@@ -3,7 +3,7 @@
 # Only for Phase 4
 # HH-Firewall-SafeSpot-Markers
 
-!hhmarker or /hhmarker to toggle on or off (on by default)
+!p4 or /p4 to toggle on or off (on by default)
 
 
 # Requires
