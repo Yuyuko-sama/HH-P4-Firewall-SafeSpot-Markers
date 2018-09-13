@@ -1,6 +1,5 @@
 //Thanks to Riseno and Ethical for coordinates, testing and stuff.
-const	{protocol} = require('tera-data-parser'),
-		Command = require('command'),		
+const	{protocol} = require('tera-data-parser'),		
 		HARROWHOLD = 9950,
 		MARKER = 556,			 // big Flower
 		COORDS = [
@@ -14,37 +13,36 @@ const	{protocol} = require('tera-data-parser'),
 		{x:-6353,y:-84872,z:1},  // Left-Middle
 		{x:-8908,y:-84001,z:1}]; // Right-Middle
 
-module.exports = function hhmarker(dispatch) {
-	const command = Command(dispatch)
+module.exports = function hhmarker(mod) {
 	let enabled = true,
 		inDung = false,
 		uid = 999999999,
 		markers = [];
 	
-	command.add('p4', () => {
+	mod.command.add('p4', () => {
 		if(enabled){
 			enabled = false;
 			ClearSpawns()
-			command.message('HH-Marker p4 module toggled OFF');
+			mod.command.message('HH-Marker p4 module toggled OFF');
 		}
 		else if(!enabled){
 			enabled = true;
 			SpawnMarkers()
-			command.message('HH-Marker p4 module toggled ON');
+			mod.command.message('HH-Marker p4 module toggled ON');
 		}
 		else{
-			command.message('Invalid input,pls type command: p4 to toggle this module ');
+			mod.command.message('Invalid input,pls type command: p4 to toggle this module ');
 		}
 	});
 		
-	dispatch.hook('S_LOAD_TOPO', 3, (event) => {
+	mod.hook('S_LOAD_TOPO', 3, (event) => {
 		ClearSpawns();
 		if(event.zone == HARROWHOLD){
 			inDung = true;
 		}
 	});
 	
-	dispatch.hook('C_LOAD_TOPO_FIN', 1, (event) => {
+	mod.hook('C_LOAD_TOPO_FIN', 1, (event) => {
 		if(enabled)
 		{
 			SpawnMarkers()
@@ -69,7 +67,7 @@ module.exports = function hhmarker(dispatch) {
 	}
 	
 	function SpawnThing(position,item){
-		dispatch.toClient('S_SPAWN_COLLECTION', 4, {
+		mod.toClient('S_SPAWN_COLLECTION', 4, {
 			gameId : uid,
 			id : item,
 			amount : 1,
@@ -84,7 +82,7 @@ module.exports = function hhmarker(dispatch) {
 	}
 	
 	function Despawn(uid){
-	dispatch.toClient('S_DESPAWN_COLLECTION', 2, {
+	mod.toClient('S_DESPAWN_COLLECTION', 2, {
 			gameId : uid,
 			collected : 0
 		});
