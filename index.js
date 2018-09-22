@@ -67,7 +67,7 @@ module.exports = function hhmarker(mod) {
 	}
 	
 	function SpawnThing(position,item){
-		mod.toClient('S_SPAWN_COLLECTION', 4, {
+		mod.send('S_SPAWN_COLLECTION', 4, {
 			gameId : uid,
 			id : item,
 			amount : 1,
@@ -82,7 +82,7 @@ module.exports = function hhmarker(mod) {
 	}
 	
 	function Despawn(uid){
-	mod.toClient('S_DESPAWN_COLLECTION', 2, {
+	mod.send('S_DESPAWN_COLLECTION', 2, {
 			gameId : uid,
 			collected : 0
 		});
