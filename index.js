@@ -84,7 +84,7 @@ module.exports = function hhmarker(mod) {
 	function Despawn(uid){
 	mod.send('S_DESPAWN_COLLECTION', 2, {
 			gameId : uid,
-			collected : 0
+			collected : false
 		});
 	}
 
